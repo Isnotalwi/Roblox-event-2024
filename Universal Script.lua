@@ -193,4 +193,3 @@ end)
 Others:AddButton("Credit", ".",function() 
 sendNotification("Alwi", "Made By Love", 10)
 end) 
-end
