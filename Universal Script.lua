@@ -67,9 +67,18 @@ Naw:AddButton("Driving Impire winter", "Torsisme", function()
 game:GetService('TeleportService'):Teleport(3351674303, LocalPlayer)
 end)
 
+Naw:AddButton("Sale War Tycoon", "Torsisme", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/WarTycoonWinter"))()
 Naw:AddButton("Driving Impire winter", "Torsisme", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/DrivingEmpireWinter"))()
-Naw:AddButton("Driving Impire winter", "Torsisme", function()
-      --  https://www.roblox.com/id/games/3351674303/SPOTLIGHT-Driving-Empire-Car-Racing
-game:GetService('TeleportService'):Teleport(3351674303, LocalPlayer)
+      --  https://www.roblox.com/id/games/4639625707/SALE-War-Tycoon
+game:GetService('TeleportService'):Teleport(4639625707, LocalPlayer)
 end)
+
+Naw:AddButton("Sale War Tycoon", "Torsisme", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/WarTycoonWinter"))()
+Naw:AddButton("Driving Impire winter", "Torsisme", function()
+      --  https://www.roblox.com/id/games/4639625707/SALE-War-Tycoon
+game:GetService('TeleportService'):Teleport(4639625707, LocalPlayer)
+end)
+
+                
