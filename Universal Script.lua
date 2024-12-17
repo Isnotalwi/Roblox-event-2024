@@ -13,20 +13,15 @@ local function playNotificationSound()
     notificationSound:Play()
 end
 
-
-
 local function sendNotification(title, text, duration)
-        game.StarterGui:SetCore("SendNotification", {
-            Title = title,
-            Text = text,
-            Duration = duration or 3,
-        })
-    end
+    game.StarterGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration or 3,
+    })
+end
 
 local HWID
-
-
-
 
 local MarketplaceService = cloneref(game:GetService("MarketplaceService")) 
 local gameInfo = MarketplaceService:GetProductInfo(game.PlaceId)
@@ -44,7 +39,6 @@ local Discord = Home:AddSection("Discord/Support")
 local Farm = Naw:AddSection("/Main Others script")
 local Others = Myhusband:AddSection("Fps Booster")
 
-
 Logged:AddButton("Game Name : " .. gameName, "Name Game Detected", function() end)
 Logged:AddButton("Place ID Game : " .. placeId, "ID Game", function() end)
 Logged:AddButton("Name Username : " .. game.Players.LocalPlayer.Name, "Your real username", function() end)
@@ -61,24 +55,25 @@ Discord:AddButton("Discord Server", "Join our Discord", function()
 end)
 
 Naw:AddButton("Driving Impire winter", "Torsisme", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/DrivingEmpireWinter"))()
-Naw:AddButton("Driving Impire winter", "Torsisme", function()
-      --  https://www.roblox.com/id/games/3351674303/SPOTLIGHT-Driving-Empire-Car-Racing
-game:GetService('TeleportService'):Teleport(3351674303, LocalPlayer)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/DrivingEmpireWinter"))()
+end)
+
+Naw:AddButton("Driving Empire winter", "Torsisme", function()
+    game:GetService('TeleportService'):Teleport(3351674303, game.Players.LocalPlayer)
 end)
 
 Naw:AddButton("Sale War Tycoon", "Torsisme", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/WarTycoonWinter"))()
-Naw:AddButton("Driving Impire winter", "Torsisme", function()
-      --  https://www.roblox.com/id/games/4639625707/SALE-War-Tycoon
-game:GetService('TeleportService'):Teleport(4639625707, LocalPlayer)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/WarTycoonWinter"))()
 end)
 
-Naw:AddButton("Sale War Tycoon", "Torsisme", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/main/WarTycoonWinter"))()
-Naw:AddButton("Driving Impire winter", "Torsisme", function()
-      --  https://www.roblox.com/id/games/4639625707/SALE-War-Tycoon
-game:GetService('TeleportService'):Teleport(4639625707, LocalPlayer)
+Naw:AddButton("War Tycoon", "Torsisme", function()
+    game:GetService('TeleportService'):Teleport(4639625707, game.Players.LocalPlayer)
 end)
 
-                
+Naw:AddButton("Sonic Speed Simulator", "Torsisme", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/12f5fdada80106997bb79e262d2ac01bab2c6d24/SonicWinter"))()
+end)
+
+Naw:AddButton("Sonic Speed Simulator", "Torsisme", function()
+    game:GetService('TeleportService'):Teleport(9049840490, game.Players.LocalPlayer)
+end)
