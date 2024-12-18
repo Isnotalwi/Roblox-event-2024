@@ -91,8 +91,17 @@ Naw:AddButton("Royale High", "Torsisme", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/refs/heads/main/RoyaleHighWinter"))()
 end)
 
-Naw:AddButton("Teleport Royale High", "Torsisme", function()
+Naw:AddButton("Teleport to royale high", "Torsisme", function()
     game:GetService('TeleportService'):Teleport(735030788, game.Players.LocalPlayer)
+end)
+
+Naw:AddButton("Adopt Me", "Torsisme", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/refs/heads/main/AdoptMeWINTER"))()
+end)
+
+Naw:AddButton("Teleport Adopt me", "Torsisme", function()
+        -- https://www.roblox.com/id/games/920587237/WINTER-Adopt-Me
+    game:GetService('TeleportService'):Teleport(920587237, game.Players.LocalPlayer)
 end)
 
 
