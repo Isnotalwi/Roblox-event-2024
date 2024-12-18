@@ -36,7 +36,7 @@ local Myhusband = Window:NewTab("Misc")
 
 local Logged = Home:AddSection("Information Account")
 local Discord = Home:AddSection("Discord/Support")
-local Farm = Naw:AddSection("/Main Others script")
+local Naw = Naw:AddSection("/Main Others script")
 local Others = Myhusband:AddSection("Fps Booster")
 
 Logged:AddButton("Game Name : " .. gameName, "Name Game Detected", function() end)
