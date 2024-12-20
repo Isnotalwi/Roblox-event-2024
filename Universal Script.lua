@@ -113,6 +113,14 @@ Naw:AddButton("Teleport Greenville ", "Torsisme", function()
     game:GetService('TeleportService'):Teleport(891852901, game.Players.LocalPlayer)
 end)
 
+Naw:AddButton("Warrio Cats", "Torsisme", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ToraScript/Script/refs/heads/main/WarriorCatsWinter"))()
+end)
+
+Naw:AddButton("Teleport warrio cat", "Torsisme", function()
+        -- https://www.roblox.com/id/games/3663340706/Warrior-Cats-Ultimate-Edition
+    game:GetService('TeleportService'):Teleport(3663340706, game.Players.LocalPlayer)
+end)
 
 Others:AddButton("AntiLag","Booster Expirce",function() 
 local decalsyeeted = true 
