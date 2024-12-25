@@ -171,7 +171,7 @@ while task.wait() do
 end
 end)
 Naw:AddButton("Put Code Commader Find youself (Need collect Shard)", "?",function() 
-sendNotification(Game Notice, Put Code commader Phone Check Your clipboard, 30)
+sendNotification('Game Notice','Put Code commader Phone Check Your clipboard', '30')
 setclipboard("OPERATION I.C.E")
 end)
 
