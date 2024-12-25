@@ -122,7 +122,60 @@ Naw:AddButton("Teleport warrio cat", "Torsisme", function()
     game:GetService('TeleportService'):Teleport(3663340706, game.Players.LocalPlayer)
 end)
 
-Others:AddButton("AntiLag","Booster Expirce",function() 
+
+Naw:AddButton("Teleport TDS", "Torsisme", function()
+        -- https://www.roblox.com/id/games/3260590327/Warrior-Cats-Ultimate-Edition
+    game:GetService('TeleportService'):Teleport(3260590327, game.Players.LocalPlayer)
+end)
+
+Naw:AddButton("Auto Collect Shard (Event)", "?",function() 
+local function TweenToPosition(targetPosition, duration)
+    if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        game:GetService("TweenService"):Create(
+            humanoidRootPart,
+            TweenInfo.new(duration, Enum.EasingStyle.Linear),
+            {CFrame = targetPosition}
+        ):Play()
+    end
+end
+
+spawn(function()
+    while true do
+        for _, pro in ipairs(workspace:GetDescendants()) do
+            if pro:IsA("ProximityPrompt") then
+                if not fireproximityprompt(pro) then
+                    task.wait()
+                end
+            end
+        end
+        task.wait()
+    end
+end)
+
+while task.wait() do
+    local Pickups = workspace.Map.Quest.Crystals
+    for _, Object in ipairs(Pickups:GetChildren()) do
+        if Object.Name == "Crystal" and game.Players.LocalPlayer.Character.HumanoidRootPart then
+            TweenToPosition(Object:GetPrimaryPartCFrame(), 0.5)
+            task.wait(0.5)
+            if not fireproximityprompt(Object) then
+                task.wait()
+            end
+            repeat
+                TweenToPosition(Object:GetPrimaryPartCFrame(), 0.5)
+                task.wait(0.5)
+            until not Object:IsDescendantOf(Pickups)
+        end
+            end
+end
+end)
+Naw:AddButton("Put Code Commader Find youself (Need collect Shard)", "?",function() 
+sendNotification(Game Notice, Put Code commader Phone Check Your clipboard, 30)
+setclipboard("OPERATION I.C.E")
+end)
+
+Others:AddToggle("Hide Player", "?",false,function(Why) 
 local decalsyeeted = true 
 local g = game
 local w = g.Workspace
