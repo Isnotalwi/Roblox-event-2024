@@ -128,49 +128,56 @@ Naw:AddButton("Teleport TDS", "Torsisme", function()
     game:GetService('TeleportService'):Teleport(3260590327, game.Players.LocalPlayer)
 end)
 
-Naw:AddButton("Auto Collect Shard (Event)", "?",function() 
-local TweenService = game:GetService("TweenService")
-local Player = game.Players.LocalPlayer
-local Character = Player.Character or Player.CharacterAdded:Wait()
+Naw:AddToggle("Auto Collect Shard (Event)", "?",false,function(hey) 
+getgenv().EnableLoop = hey -- Toggle for the combined loop
 
--- Function to tween to a position
 local function TweenToPosition(targetPosition, duration)
-    if Character and Character:FindFirstChild("HumanoidRootPart") then
-        local humanoidRootPart = Character.HumanoidRootPart
-        TweenService:Create(
-            humanoidRootPart,
-            TweenInfo.new(duration, Enum.EasingStyle.Linear),
-            {CFrame = targetPosition}
-        ):Play()
+    if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local success, err = pcall(function()
+            game:GetService("TweenService"):Create(
+                humanoidRootPart,
+                TweenInfo.new(duration, Enum.EasingStyle.Linear),
+                {CFrame = targetPosition}
+            ):Play()
+        end)
+        if not success then
+            warn("Error in TweenToPosition:", err)
+        end
     end
 end
 
--- Function to handle ProximityPrompts
-local function HandleProximityPrompt(proximityPrompt)
-    if proximityPrompt:IsA("ProximityPrompt") then
-        fireproximityprompt(proximityPrompt)
-    end
-end
+spawn(function()
+    while getgenv().EnableLoop do
+        local success, err = pcall(function()
+            -- Handle Proximity Prompts
+            for _, pro in ipairs(workspace:GetDescendants()) do
+                if pro:IsA("ProximityPrompt") then
+                    fireproximityprompt(pro)
+                    task.wait(0.1) -- Delay to prevent overloading
+                end
+            end
 
--- Function to handle crystals
-local function HandleCrystal(crystal)
-    if Character and crystal:IsA("Model") and crystal:FindFirstChild("PrimaryPart") then
-        local crystalCFrame = crystal.PrimaryPart.CFrame
-        TweenToPosition(crystalCFrame, 0.5)
-        
-        task.delay(0.5, function()
-            -- Interact with the proximity prompt after tweening
-            local prompt = crystal:FindFirstChildWhichIsA("ProximityPrompt", true)
-            if prompt then
-                HandleProximityPrompt(prompt)
+            -- Handle Crystals
+            local Pickups = workspace.Map.Quest.Crystals
+            for _, Object in ipairs(Pickups:GetChildren()) do
+                if Object.Name == "Crystal" and game.Players.LocalPlayer.Character.HumanoidRootPart then
+                    TweenToPosition(Object:GetPrimaryPartCFrame(), 0.5)
+                    task.wait(0.5)
+                    local proximityPrompt = Object:FindFirstChildWhichIsA("ProximityPrompt", true)
+                    if proximityPrompt then
+                        fireproximityprompt(proximityPrompt)
+                    end
+                    task.wait(0.5)
+                end
             end
         end)
-    end
-end
+        if not success then
+            warn("Error in combined loop:", err)
+        end
 
--- Event to monitor new crystals
-workspace.Map.Quest.Crystals.ChildAdded:Connect(function(crystal)
-    HandleCrystal(crystal)
+        task.wait(1) -- Delay to prevent high CPU usage
+    end
 end)
 end)
 Naw:AddButton("Put Code Commader Find youself (Need collect Shard)", "?",function() 
